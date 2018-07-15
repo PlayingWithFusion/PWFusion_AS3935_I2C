@@ -7,36 +7,36 @@
 ####################################################
 #   Classes (KEYWORD1)
 ####################################################
-PWF_AS3935_I2C							KEYWORD1
+PWF_AS3935_I2C	KEYWORD1
 
 
 ####################################################
 #   Functions (KEYWORD2)
 ####################################################
-AS3935_DefInit							KEYWORD2
-_AS3935_Reset							KEYWORD2
-_CalRCO									KEYWORD2
-AS3935_PowerUp							KEYWORD2
-AS3935_PowerDown						KEYWORD2
-AS3935_DisturberEn						KEYWORD2
-AS3935_DisturberDis						KEYWORD2
-AS3935_SetIRQ_Output_Source				KEYWORD2
-AS3935_SetTuningCaps					KEYWORD2
-AS3935_GetInterruptSrc					KEYWORD2
-AS3935_GetLightningDistKm				KEYWORD2
-AS3935_SetMinStrikes					KEYWORD2
-AS3935_SetIndoors						KEYWORD2
-AS3935_SetOutdoors						KEYWORD2
-AS3935_ClearStatistics					KEYWORD2
-AS3935_GetNoiseFloorLvl					KEYWORD2
-AS3935_SetNoiseFloorLvl					KEYWORD2
-AS3935_GetWatchdogThreshold				KEYWORD2
-AS3935_SetWatchdogThreshold				KEYWORD2
-AS3935_GetSpikeRejection				KEYWORD2
-AS3935_SetSpikeRejection				KEYWORD2
-AS3935_SetLCO_FDIV						KEYWORD2
-AS3935_PrintAllRegs						KEYWORD2
-AS3935_ManualCal						KEYWORD2
+AS3935_DefInit	KEYWORD2
+_AS3935_Reset	KEYWORD2
+_CalRCO	KEYWORD2
+AS3935_PowerUp	KEYWORD2
+AS3935_PowerDown	KEYWORD2
+AS3935_DisturberEn	KEYWORD2
+AS3935_DisturberDis	KEYWORD2
+AS3935_SetIRQ_Output_Source	KEYWORD2
+AS3935_SetTuningCaps	KEYWORD2
+AS3935_GetInterruptSrc	KEYWORD2
+AS3935_GetLightningDistKm	KEYWORD2
+AS3935_SetMinStrikes	KEYWORD2
+AS3935_SetIndoors	KEYWORD2
+AS3935_SetOutdoors	KEYWORD2
+AS3935_ClearStatistics	KEYWORD2
+AS3935_GetNoiseFloorLvl	KEYWORD2
+AS3935_SetNoiseFloorLvl	KEYWORD2
+AS3935_GetWatchdogThreshold	KEYWORD2
+AS3935_SetWatchdogThreshold	KEYWORD2
+AS3935_GetSpikeRejection	KEYWORD2
+AS3935_SetSpikeRejection	KEYWORD2
+AS3935_SetLCO_FDIV	KEYWORD2
+AS3935_PrintAllRegs	KEYWORD2
+AS3935_ManualCal	KEYWORD2
 
 ####################################################
 #   Constants (LITERAL1)
