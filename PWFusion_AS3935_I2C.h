@@ -9,7 +9,7 @@
 *   SEN-39001 (universal applications)
 *   ---> http://www.playingwithfusion.com/productview.php?pdid=22
 *
-* Copyright © 2015 Playing With Fusion, Inc.
+* Copyright ï¿½ 2015 Playing With Fusion, Inc.
 * SOFTWARE LICENSE AGREEMENT: This code is released under the MIT License.
 *
 * Permission is hereby granted, free of charge, to any person obtaining a
@@ -33,6 +33,7 @@
 * REVISION HISTORY:
 * Author		Date		Comments
 * J. Steinlage	2015	Original version
+* N. Johnson	2025	Removed dependency on obscure I2C lib
 * 
 * Playing With Fusion, Inc. invests time and resources developing open-source
 * code. Please support Playing With Fusion and continued open-source 
@@ -49,9 +50,8 @@
 
 #include "Arduino.h"
 #include "avr/pgmspace.h"
-#include "util/delay.h"
 #include "stdlib.h"
-#include "I2C.h"
+#include "Wire.h"
 
 class PWF_AS3935_I2C
 {

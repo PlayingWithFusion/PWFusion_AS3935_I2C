@@ -35,6 +35,7 @@
 * J. Steinlage	2015Jul20	Original version
 * J. Steinlage  2016Jul05   Fixed data write issue - now writing 'NewRegData'
 *							  based on feedback from J Shuhy and A Jahnke
+* N. Johnson	2025Apr26	Removed dependency on obscure I2C lib
 * 
 * Playing With Fusion, Inc. invests time and resources developing open-source
 * code. Please support Playing With Fusion and continued open-source 
@@ -66,8 +67,11 @@ PWF_AS3935_I2C::PWF_AS3935_I2C(uint8_t IRQx, uint8_t SIx, uint8_t DEVADDx)
 uint8_t PWF_AS3935_I2C::_sing_reg_read(uint8_t RegAdd)
 {
 	//        I2C address      Register address   num bytes
-	I2c.read((uint8_t)_devadd, (uint8_t)RegAdd, (uint8_t)0x01);	// Use I2C library to read register
-	uint8_t RegData = I2c.receive();							// receive the I2C data
+	Wire.beginTransmission((uint8_t)_devadd);		// Begin wire transmission at address
+	Wire.write((uint8_t)RegAdd);					// Write register address to read from
+	Wire.endTransmission(false);							// prepare for reading
+	Wire.requestFrom((uint8_t)_devadd, (uint8_t)0x01);	// Request 1 byte from address
+	uint8_t RegData = Wire.read();						// receive the I2C data
 	return RegData;
 }
 
@@ -82,7 +86,11 @@ void PWF_AS3935_I2C::_sing_reg_write(uint8_t RegAdd, uint8_t DataMask, uint8_t R
 	uint8_t NewRegData = ((OrigRegData & ~DataMask) | (RegData & DataMask));
 
 	// finally, write the data to the register
-	I2c.write(_devadd, RegAdd, NewRegData);
+	Wire.beginTransmission((uint8_t)_devadd);	// Begin transmission on address
+	Wire.write((uint8_t)RegAdd);					// Write register to write data
+	Wire.write((uint8_t)NewRegData);				// Write new data
+	Wire.endTransmission(false);				// End the transmission
+
 	Serial.print("wrt: ");
 	Serial.print(NewRegData,HEX);
 	Serial.print(" Act: ");
@@ -97,14 +105,20 @@ void PWF_AS3935_I2C::AS3935_DefInit()
 void PWF_AS3935_I2C::_AS3935_Reset()
 {
 	// run PRESET_DEFAULT Direct Command to set all registers in default state
-	I2c.write(_devadd, (uint8_t)0x3C, (uint8_t)0x96);
+	Wire.beginTransmission((uint8_t)_devadd);
+	Wire.write((uint8_t)0x3C);
+	Wire.write((uint8_t)0x96);
+	Wire.endTransmission(false);
 	delay(2);					// wait 2ms to complete
 }
 
 void PWF_AS3935_I2C::_CalRCO()
 {
 	// run ALIB_RCO Direct Command to cal internal RCO
-	I2c.write(_devadd, (uint8_t)0x3D, (uint8_t)0x96);
+	Wire.beginTransmission((uint8_t)_devadd);
+	Wire.write((uint8_t)0x3D);
+	Wire.write((uint8_t)0x96);
+	Wire.endTransmission(false);
 	delay(2);					// wait 2ms to complete
 }
 
